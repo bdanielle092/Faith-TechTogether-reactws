@@ -7,7 +7,7 @@ import {
     faComments
 } from '@fortawesome/free-solid-svg-icons'
 import * as outlineIcon from '@fortawesome/free-regular-svg-icons'
-import { posts } from './../data/data';
+
 export function NewsFeed(props) {
     return (
         <section>
@@ -38,17 +38,9 @@ function PostContainer(props) {
         const dateA = new Date(postA.datePosted);
         const dateB = new Date(postB.datePosted);
         return dateB - dateA;
-
-        let postComponents = posts.map((postInfo) => {
-            const user = users[postInfo.userId]
-            return <Post name={user.name} datePosted={postInfo.name} content={postInfo.content} />;
-            return <Post name="Jin" datePosted="Jan 3rd" content="I had a good day" />;
-        })
     }
 
-    return <>
-        {postComponents};
-    </>
+    return null;
 }
 
 function Post(props) {
@@ -79,26 +71,7 @@ function Post(props) {
         </div>
     </div>
      */
-    const profilePicture = {
-        backgroundImage: `url("../img/profile/${props.profilePic}")`
-    }
-    return (
-        <div class="post-container">
-            <div class="post" id="al">
-                <div class="profile-img">&nbsp;</div>
-                <div class="post-content">
-                    <p class="bold">{props.name}</p>
-                    <p>{props.datePosted}</p>
-                    <p>{props.content}</p>
-                </div>
-                <div class="post-actions">
-                    <i class="fas fa-ellipsis-v"></i>
-                    <i class="far fa-heart"></i>
-                    <i class="fas fa-comments"></i>
-                </div>
-            </div>
-        </div>
-    );
+    return (null);
 }
 
 function Comment(props) {
