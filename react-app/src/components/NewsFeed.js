@@ -1,13 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  // Post Action Icons
-  faHeart,
-  faEllipsisV, 
-  faComments 
+    // Post Action Icons
+    faHeart,
+    faEllipsisV,
+    faComments
 } from '@fortawesome/free-solid-svg-icons'
 import * as outlineIcon from '@fortawesome/free-regular-svg-icons'
-
+import { posts } from './../data/data';
 export function NewsFeed(props) {
     return (
         <section>
@@ -21,12 +21,12 @@ export function NewsFeed(props) {
 function PostInput(props) {
 
     const inputChange = (event) => {
-        
+
     }
 
     // post data contains id, userId, content, img, datePosted, like, comments
     const onPost = (event) => {
-        
+
     }
 
     return (null)
@@ -38,13 +38,21 @@ function PostContainer(props) {
         const dateA = new Date(postA.datePosted);
         const dateB = new Date(postB.datePosted);
         return dateB - dateA;
+
+        let postComponents = posts.map((postInfo) => {
+            const user = users[postInfo.userId]
+            return <Post name={user.name} datePosted={postInfo.name} content={postInfo.content} />;
+            return <Post name="Jin" datePosted="Jan 3rd" content="I had a good day" />;
+        })
     }
 
-    return null;
+    return <>
+        {postComponents};
+    </>
 }
 
 function Post(props) {
-    
+
     /*
     <div class="post-container">
         <div class="post" id="al">
@@ -71,7 +79,26 @@ function Post(props) {
         </div>
     </div>
      */
-    return (null);
+    const profilePicture = {
+        backgroundImage: `url("../img/profile/${props.profilePic}")`
+    }
+    return (
+        <div class="post-container">
+            <div class="post" id="al">
+                <div class="profile-img">&nbsp;</div>
+                <div class="post-content">
+                    <p class="bold">{props.name}</p>
+                    <p>{props.datePosted}</p>
+                    <p>{props.content}</p>
+                </div>
+                <div class="post-actions">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="far fa-heart"></i>
+                    <i class="fas fa-comments"></i>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 function Comment(props) {
